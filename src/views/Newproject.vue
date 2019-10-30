@@ -1,14 +1,16 @@
 <template>
-  <v-card color="" >
-    <v-card-title class="text-center justify-center py-6">
-      <h1 class="font-weight-bold display-1 ">New Project</h1>
-    </v-card-title>
-
+  <v-card color="" class="fill-height">
+     <!-- <v-toolbar flat class="white grey--text" dark>
+      <v-toolbar-title>New Project</v-toolbar-title>
+    </v-toolbar> -->
     <v-tabs
       v-model="tab"
-      background-color="transparent"
+      background-color="blue-grey lighten-4"
       color="basil"
-      grow
+      vertical
+      left
+      outlined
+      class="fill-height ml-2 mt-2"
     >
       <v-tab
         v-for="item in items"
@@ -16,38 +18,42 @@
       >
         {{ item }}
       </v-tab>
-    </v-tabs>
+    
 
-    <v-tabs-items v-model="tab">
-      <v-tab-item>
+      <v-tab-item class="fill-height">
         <Configs />
       </v-tab-item>
-      <v-tab-item>
-        <v-card flat color="white">
-          <v-card-text>{{ text }}</v-card-text>
-        </v-card>
+      <v-tab-item class="fill-height">
+        <SurveyBody />
       </v-tab-item>
-      <v-tab-item>
-        <v-card flat color="white">
-          <v-card-text>{{ text }}</v-card-text>
-        </v-card>
+      <v-tab-item class="fill-height">
+        <Logic />
+      </v-tab-item >
+      <v-tab-item class="fill-height">
+       <Preview />
       </v-tab-item>
-    </v-tabs-items>
+      </v-tabs>
   </v-card>
 </template>
 
 <script>
 // @ is an alias to /src
 import Configs from '@/components/NewProject/Config';
+import SurveyBody from '@/components/SurveyBody/SurveyBody'
+import Logic from '@/components/Logic/Logic'
+import Preview from '@/components/Preview/Preview';
   export default {
     components: {
-      Configs
+      Configs,
+      SurveyBody,
+      Logic,
+      Preview
     },
     data () {
       return {
         tab: null,
         items: [
-          'Configs', 'Survye Body', 'Preview',
+          'Configs', 'Survey Body', 'Logic', 'Preview',
         ],
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       }

@@ -4,10 +4,10 @@
         fluid
       >
 
-    <v-row  align="center"
+    <!-- <v-row  align="center"
           justify="center">
                 <h2 class="h2">Register New User</h2>
-    </v-row>     
+    </v-row>      -->
 
         <v-row
           align="center"
@@ -16,9 +16,11 @@
         >
           <v-col
             cols="6"
-            class="pa-4"
           >
-            <v-card  class="elevation-12">
+            <v-card flat class="pa-10">
+              <v-card-title>
+               Register new User
+              </v-card-title>
               <v-card-text>
                 <v-form>
                     <v-text-field

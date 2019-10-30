@@ -1,22 +1,25 @@
 <template>
-  <v-container fluid class="">
+  <v-container fluid class="fill-height">
       <v-row justify="center" >
           <v-col md="10">
-              <v-card class="pa-10">
+              <v-card flat class="pa">
+                   <v-card-title class="title grey--text text--darken-2">
+                       Configs {{title + ' ' + item}}
+                    </v-card-title>
                   <v-text-field
                     label="Title"
                     outlined
                     dense
                     v-model="title"
                 ></v-text-field>
-                 <v-select
+                <v-select
                     :items="items"
                     label="Type"
                     dense
                     outlined
                     v-model="item"
-                    ></v-select>
-                    <v-card outlined>
+                ></v-select>
+                    <v-card flat>
                         <v-card-title class="title grey--text text--darken-2">
                             Required Parameters: {{ r_selected}}
                         </v-card-title>
@@ -28,6 +31,7 @@
                                         md="3"
                                    >
                                           <v-checkbox 
+                                            disabled
                                             v-model="r_selected" 
                                             :label="req.label" 
                                             :value="req.value"
@@ -105,11 +109,9 @@
                                                 </v-expansion-panel-content>
                                             </v-expansion-panel>
                                             <v-expansion-panel v-show="required_parameters[1].c">
-                                                <v-expansion-panel-header>Brand-Usage</v-expansion-panel-header>
+                                                <v-expansion-panel-header>Brand Usage</v-expansion-panel-header>
                                                 <v-expansion-panel-content>
-                                                    
                                                 </v-expansion-panel-content>
-                                                
                                             </v-expansion-panel>
                                         </v-expansion-panels>
                                    </v-col>
@@ -117,6 +119,11 @@
                            </v-container>
 
                     </v-card>
+                    <v-card-actions>
+                        <v-btn :disabled="validInfo" class="primary" @click="Done">
+                            <span>Done</span>
+                        </v-btn>
+                    </v-card-actions>
               </v-card>
 
           </v-col>
@@ -125,6 +132,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
@@ -142,40 +150,32 @@ export default {
                 {label: 'Gender', value: 'G', c: false}
             ],
             items: [
+                'Retail',
                 'Customer',
-                'Retail'
             ],
-
-            itemss: [
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Brunch this weekend?',
-          subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-          subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.",
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Oui oui',
-          subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-          title: 'Birthday gift',
-          subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-          title: 'Recipe to try',
-          subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
-        },
-      ],
+        }
+    },
+    computed: {
+        validInfo() {
+            return this.item == '' || this.title =='';
         }
     },
     methods: {
+        Done() {
+            if(this.item != '' && this.title !=''){
+                axios.post('http://192.168.0.188:4000', {
+                query: `
+                     mutation {
+                        createProject(branch: 1, name: "${this.title}", type:${this.items.indexOf(this.item) +1} ) {
+                            id
+                        }
+                    }
+                `
+            }).then( result => {
+                console.log(result.data)
+            })
+            }
+        },
         prop_changed(i) {
             this.required_parameters[i].c = !this.required_parameters[i].c;
         },

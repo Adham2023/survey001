@@ -5,6 +5,8 @@ import Login from '../views/Login'
 import Newproject from '../views/Newproject'
 import Newuser from '../views/Newreg'
 import Reports from '../views/Reports'
+import Projects from '../components/Projects/Projects'
+import Assignments from '../views/Assigns.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +20,16 @@ const routes = [
     path: '/',
     component: Home,
     children: [
+      {
+        path: 'assignments',
+        name: 'assignments',
+        component: Assignments
+      },
+      {
+        path: 'projects',
+        name: 'projects',
+        component: Projects
+      },
       {
         path: 'reports',
         name: 'reports',

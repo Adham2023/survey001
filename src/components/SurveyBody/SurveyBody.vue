@@ -1,0 +1,73 @@
+<template>
+ <v-container fuid class="fill-height " >
+   <v-row justify="space-around" class="fill-height " >
+     <v-col md="8" class="fill-height ">
+       <keep-alive>
+        <component :is="currentQType"></component>
+      </keep-alive>
+     </v-col>
+     <v-col  class="ml-2 fill-height ">
+       <v-card
+          height="77vh"
+          class="mx-auto"
+        >
+          <v-card-title>Toolbox</v-card-title>
+          <v-card-text>
+            <v-select
+              :items="Q_Types"
+              label="Question Type"
+              outlined
+              v-model="q_type"
+
+            ></v-select>
+            <p>{{q_type}}</p>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn text>Click</v-btn>
+          </v-card-actions>
+        </v-card>
+     </v-col>
+   </v-row>
+ </v-container>
+</template>
+
+<script>
+import MCH from '../SurveyBodyElements/MultipleChoice';
+import RB from '../SurveyBodyElements/RangeBased';
+import SS from '../SurveyBodyElements/SingleSelection';
+import TIN from '../SurveyBodyElements/TextInput';
+import OTH from '../SurveyBodyElements/CustomQuestions/Other';
+import YN from '../SurveyBodyElements/YesNo';
+export default {
+  components: {
+    MCH,
+    RB,
+    SS,
+    TIN,
+    OTH,
+    YN
+  },
+  data() {
+    return {
+      q_type: 'MCH',
+      Q_Types: [ 
+                {text:'Multiple Choice', value: 'MCH' }, 
+                {text: 'Single Selection', value: 'SS'}, 
+                {text: 'Text Input', value: 'TIN'},
+                {text: 'Range Based', value: 'RB'}, 
+                {text: 'Yes No', value: 'YN'}, 
+                { text: 'Other', value: 'OTH'}
+      ]
+    }
+  },
+  computed: {
+    currentQType() {
+      return this.q_type;
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

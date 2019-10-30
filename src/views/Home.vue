@@ -4,8 +4,9 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
+      
     >
-      <v-list dense >
+      <v-list dense  tile>
         <template v-for="item in routes">
           <v-list-item
             :key="item.text"
@@ -23,6 +24,7 @@
           </v-list-item>
         </template>
       </v-list>
+     
     </v-navigation-drawer>
 
     <v-app-bar
@@ -45,23 +47,8 @@
         <v-icon>exit_to_app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content  >
-      <v-container
-        class="fill-height"
-        fluid
-        color="red"
-      >
-        <v-row
-        class="fill-height"
-        color="red"
-             
-        align="start"
-        >
-         <v-col>
+    <v-content >
            <router-view></router-view>
-         </v-col>
-        </v-row>
-      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -77,7 +64,9 @@ export default {
       dialog: false,
       drawer: null,
       routes: [
+        { icon: 'view_list', text: 'Projects', path: 'Projects'},
         { icon: 'add_circle_outline', text: 'New Project', path: 'newproject' },
+        { icon: 'mdi-clipboard-account', text: 'Assignments', path: 'assignments'},
         { icon: 'bar_chart', text: 'Reports', path: 'reports' },
         { icon: 'person_add', text: 'New User', path: 'newuser' }
       ],
