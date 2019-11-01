@@ -8,7 +8,7 @@
      </v-col>
      <v-col  class="ml-2 fill-height ">
        <v-card
-          height="77vh"
+          height="80vh"
           class="mx-auto"
         >
           <v-card-title>Toolbox</v-card-title>

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; max-height: 80vh;">
+  <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; height: 80vh;">
     <v-card-title >Multiple Choice Question</v-card-title>
     <v-card-text>
         <v-container>
@@ -9,7 +9,7 @@
                         name="input-7-1"
                         label="Question Body"
                         value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-                        hint="Hint text"
+                        hint="Multiple choice Question Body"
                         v-model="questionBody"
                     ></v-textarea>
                 </v-col>
