@@ -1,6 +1,6 @@
 const state = {
     question_counter: 1,
-    newProject:null,
+    Project:[],
     Title: '',
     Type: '',
     Questions: [],
@@ -21,16 +21,20 @@ const mutations = {
         state.Title = title;
     },
     SET_TYPE(state, type) {
-        state.type = type;
-    },
-    SET_NEW_PROJECT(state, project) {
-        state.newProject = project;
+        state.Type = type;
     },
     ADD_QUESTION(state, question) {
         state.Questions.push(question);
     },
     CONVERT_TOJSON(state) {
-        console.log(JSON.stringify(state.Questions))
+        console.log(JSON.stringify(state.Project))
+    },
+    CONSTRUCT_NEW_PROJECT(state) {
+        state.Project.push({
+            Title: state.Title,
+            Type: state.Type,
+            Questions: state.Questions
+        })
     }
 }
 const actions = {
@@ -54,6 +58,9 @@ const actions = {
     },
     CONVERT_TOJSON(context) {
         context.commit('CONVERT_TOJSON')
+    },
+    CONSTRUCT_NEW_PROJECT(context) {
+        context.commit('CONSTRUCT_NEW_PROJECT')
     }
 }
 export const newProject = {

@@ -1,91 +1,89 @@
 [
     {
-        "Number": 1,
-        "type": 1,
-        "Question": "M1 Question",
-        "Answer": [
-            "C",
-            "B",
-            "A"
-        ]
-    },
-    {
-        "Number": 2,
-        "Type": 2,
-        "Question": "S1 Question",
-        "Answers": [
-            "D",
-            "C",
-            "B",
-            "A"
-        ]
-    },
-    {
-        "Number": 3,
-        "Type": 3,
-        "InputType": "email",
-        "Question": "T1 Question"
-    },
-    {
-        "Number": 4,
-        "Type": 4,
-        "Question": "R1",
-        "Range": "10"
-    },
-    {
-        "Number": 5,
-        "Type": 5,
-        "Question": "Yes Or No",
-        "Answers": [
-            1,
-            0
-        ]
-    },
-    {
-        "Number": 6,
-        "Type": 6,
-        "productLabels": [
+        "Title": "R2",
+        "Type": "Retail",
+        "Questions": [
             {
-                "id": 0,
-                "text": "Pishgan"
+                "Number": 1,
+                "type": 1,
+                "Question": "M1 Question",
+                "Answer": [
+                    "B",
+                    "A"
+                ]
             },
             {
-                "id": 1,
-                "text": "Hom"
-            }
-        ],
-        "columns": [
-            {
-                "id": 0,
-                "name": "Available",
-                "type": 1
+                "Number": 2,
+                "Type": 2,
+                "Question": "S1 Question",
+                "Answers": [
+                    "B",
+                    "A"
+                ]
             },
             {
-                "id": 1,
-                "name": "Price",
-                "type": 2
+                "Number": 3,
+                "Type": 3,
+                "InputType": "number",
+                "Question": "T1"
             },
             {
-                "id": 2,
-                "name": "Amount",
-                "type": 2
+                "Number": 4,
+                "Type": 4,
+                "Question": "R1",
+                "Range": "10"
             },
             {
-                "id": 3,
-                "name": "Sizes",
-                "type": 3,
-                "ddItems": [
+                "Number": 5,
+                "Type": 5,
+                "Question": "Yes Or No",
+                "Answers": [
+                    1,
+                    0
+                ]
+            },
+            {
+                "Number": 6,
+                "Type": 6,
+                "productLabels": [
                     {
                         "id": 0,
-                        "text": "Large"
+                        "text": "Pishgan"
                     },
                     {
                         "id": 1,
-                        "text": "Medium"
+                        "text": "Pishmagan"
+                    }
+                ],
+                "columns": [
+                    {
+                        "id": 0,
+                        "name": "Available",
+                        "type": 1
+                    },
+                    {
+                        "id": 1,
+                        "name": "Price",
+                        "type": 2
                     },
                     {
                         "id": 2,
-                        "text": "small"
+                        "name": "Size",
+                        "type": 3,
+                        "ddItems": [
+                            {
+                                "id": 0,
+                                "text": "Large"
+                            },
+                            {
+                                "id": 1,
+                                "text": "Medium"
+                            },
+                            {
+                                "id": 2,
+                                "text": "Small"
+                            }
+                        ]
                     }
                 ]
             }

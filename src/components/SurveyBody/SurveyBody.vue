@@ -15,8 +15,8 @@
           <v-card flat class="mb-5">
               <v-card-title>Project Info:</v-card-title>
               <v-card-text>
-                  <h3 class="">name: <span class=""> {{'R2'}}</span> </h3>
-                  <h3>type: {{'Retail'}}</h3>
+                  <h3 class="">name: <span class=""> {{$store.state.Title}}</span> </h3>
+                  <h3>type: {{$store.state.Type}}</h3>
               </v-card-text>
             </v-card>
           <v-card-title>Toolbox</v-card-title>
@@ -76,8 +76,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['CONVERT_TOJSON']),
+    ...mapActions(['CONVERT_TOJSON', 'CONSTRUCT_NEW_PROJECT']),
     JSONI() {
+      this.CONSTRUCT_NEW_PROJECT();
       this.CONVERT_TOJSON();
     }
   }

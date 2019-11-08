@@ -13,6 +13,7 @@
                     
                     v-model="title"
                 ></v-text-field>
+                {{item}}
                 <v-select
                     :items="items"
                     label="Type"
