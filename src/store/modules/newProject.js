@@ -8,6 +8,20 @@ const state = {
 const getters = {
     currentQuestion(state) {
         return state.question_counter;
+    },
+    allQuestions(state) {
+        return state.Questions;
+    },
+    getQuestion: state =>  number =>  {
+       
+        let Questions = state.Questions;
+        let len = Questions.length;
+        for(let i = 0 ; i < len; i++) {
+            if(Questions[i].Number == number ) {
+                 return Questions[i];
+            }
+        }
+        return null;
     }
 }
 const mutations = {

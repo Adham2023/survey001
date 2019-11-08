@@ -4,8 +4,6 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
-      expand-on-hover
-      
     >
       <v-list dense  tile>
         <template v-for="item in routes">

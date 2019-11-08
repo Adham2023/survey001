@@ -5,10 +5,9 @@
     </v-toolbar> -->
     <v-tabs
       v-model="$store.state.currentTab"
-      background-color="white lighten-4"
+      background-color="grey lighten-4"
       color="basil"
       vertical
-      left
       class="fill-height  VTabs"
     >
       <v-tab

@@ -13,11 +13,12 @@
           class="mx-auto"
         >
           <v-card flat class="mb-5">
-              <v-card-title>Project Info:</v-card-title>
+              <v-card-title>Project Info</v-card-title>
               <v-card-text>
                   <h3 class="">name: <span class=""> {{$store.state.Title}}</span> </h3>
                   <h3>type: {{$store.state.Type}}</h3>
               </v-card-text>
+              <v-divider></v-divider>
             </v-card>
           <v-card-title>Toolbox</v-card-title>
           <v-card-text>
