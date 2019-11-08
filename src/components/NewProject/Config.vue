@@ -23,7 +23,7 @@
                 ></v-select>
                    
                     <v-card-actions>
-                         <v-btn class="error" @click="Done">
+                         <v-btn class="error" @click="Cancel">
                             <span>Cancel</span>
                         </v-btn>
                         <v-btn :disabled="validInfo" class="primary" @click="Done">
@@ -59,6 +59,10 @@ export default {
     },
     methods: {
         ...mapActions(['SET_TITLE', 'SET_TYPE']),
+        Cancel() {
+            this.item = '';
+            this.title = '';
+        },
         Done() {
             this.$store.state.currentTab++;
             this.$store.dispatch('PROJECT_INCR')
