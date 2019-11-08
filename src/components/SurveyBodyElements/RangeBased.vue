@@ -7,6 +7,7 @@
             <v-row>
                 <v-col>
                     <v-textarea
+                        outlined
                         name="input-7-1"
                         label="Question Body"
                         hint="Add Question Body Which Requoires Text Input"

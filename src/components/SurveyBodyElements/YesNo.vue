@@ -8,6 +8,8 @@
                 <v-col>
                     <v-textarea
                         name="input-7-1"
+                        outlined
+
                         label="Question Body"
                         hint="Add Yes No Question Body"
                         v-model="questionBody"

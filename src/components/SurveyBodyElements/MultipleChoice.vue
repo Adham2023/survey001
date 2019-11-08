@@ -6,6 +6,7 @@
             <v-row>
                 <v-col>
                     <v-textarea
+                        outlined
                         name="input-7-1"
                         label="Question Body"
                         hint="Multiple choice Question Body"

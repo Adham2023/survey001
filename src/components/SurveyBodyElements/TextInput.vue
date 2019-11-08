@@ -10,6 +10,7 @@
                         label="Question Body"
                         hint="Add Question Body Which Requoires Text Input"
                         v-model="questionBody"
+                        outlined
                     ></v-textarea>
                 </v-col>
             </v-row>
