@@ -4,13 +4,12 @@
       <v-toolbar-title>New Project</v-toolbar-title>
     </v-toolbar> -->
     <v-tabs
-      v-model="tab"
-      background-color="blue-grey lighten-4"
+      v-model="$store.state.currentTab"
+      background-color="white lighten-4"
       color="basil"
       vertical
       left
-      outlined
-      class="fill-height ml-2 mt-2"
+      class="fill-height  VTabs"
     >
       <v-tab
         v-for="item in items"
@@ -20,16 +19,16 @@
       </v-tab>
     
 
-      <v-tab-item class="fill-height">
+      <v-tab-item class="">
         <Configs />
       </v-tab-item>
-      <v-tab-item class="fill-height">
+      <v-tab-item class="">
         <SurveyBody />
       </v-tab-item>
-      <v-tab-item class="fill-height">
+      <v-tab-item class="">
         <Logic />
       </v-tab-item >
-      <v-tab-item class="fill-height">
+      <v-tab-item class="">
        <Preview />
       </v-tab-item>
       </v-tabs>
@@ -49,6 +48,8 @@ import Preview from '@/components/Preview/Preview';
       Logic,
       Preview
     },
+    mounted() {
+    },
     data () {
       return {
         tab: null,
@@ -67,5 +68,9 @@ import Preview from '@/components/Preview/Preview';
 }
 .basil--text {
   color: #356859 !important;
+}
+.VTabs {
+  border-left-width: 2px;
+  border-left-color: #356859; 
 }
 </style>

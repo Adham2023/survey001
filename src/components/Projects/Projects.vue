@@ -63,7 +63,7 @@ import axios from 'axios';
         item: 1,
         type: 0,
         types: ['All', 'Reatail', 'Customer'],
-        items: [],
+        items: [{name: 'Retail Satisfaction survey'}],
     }),
     methods: {
         typeChanged(e) {

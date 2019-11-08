@@ -1,7 +1,6 @@
 <template>
   <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; height: 80vh;">
-    
-    <v-card-title >Single Choice Question</v-card-title>
+    <v-card-title > Q{{currentQuestion}}.) Single Choice Question</v-card-title>
     <v-card-text>
         <v-container>
             <v-row>
@@ -9,7 +8,6 @@
                     <v-textarea
                         name="input-7-1"
                         label="Question Body"
-                        value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
                         hint="Hint text"
                         v-model="questionBody"
                     ></v-textarea>
@@ -20,7 +18,6 @@
                      <v-text-field
                             label="Choice"
                             single-line
-                            filled
                             prepend-icon="radio_button_unchecked"
                             v-model="choice"
                         ></v-text-field>
@@ -79,6 +76,7 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
 export default {
     data() {
         return {
@@ -88,17 +86,45 @@ export default {
 
         }
     },
+    computed: {
+        ...mapGetters(['currentQuestion']),
+    },
     methods: {
+        ...mapActions(['INCREMENT_QUESTION_COUNTER','ADD_QUESTION' ] ),
+        isValid() {
+            if(this.questionBody == '' || this.possibleAnswers.length == 0) 
+                return false;
+            return true;
+        },
         Save() {
+            if(this.isValid()) {
 
+                let question = {
+                    Number: this.currentQuestion,
+                    Type: 2,
+                    Question: this.questionBody,
+                    Answers: this.possibleAnswers
+                }
+
+
+                this.ADD_QUESTION(question);
+
+                this.INCREMENT_QUESTION_COUNTER();
+                this.choice = '';
+                this.questionBody = '';
+                this.possibleAnswers = [];
+            }
+           
         },
         Add() {
             this.possibleAnswers.unshift(this.choice);
+            this.choice = '';
             
         },
         Cancel() {
             this.possibleAnswers = [];
-            console.log(this.possibleAnswers);
+            this.choice = '';
+            this.questionBody = '';
         }
     }
 }

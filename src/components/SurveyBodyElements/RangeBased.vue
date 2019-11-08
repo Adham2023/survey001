@@ -1,7 +1,7 @@
 <template>
   <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; height: 80vh;">
   
-    <v-card-title >Text Input Answer Question</v-card-title>
+    <v-card-title > Q{{currentQuestion}}.) Range Based Question</v-card-title>
     <v-card-text>
         <v-container>
             <v-row>
@@ -48,24 +48,47 @@
                 </v-col>
             </v-row>
         </v-container>
-          
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex';
 export default {
     data() {
         return {
             questionBody: '',
-            range: null,
+            range: '',
         }
     },
+    computed: {
+        ...mapGetters(['currentQuestion']),
+    },
     methods: {
+        ...mapActions(['INCREMENT_QUESTION_COUNTER', 'ADD_QUESTION']),
+        isValid() {
+            if(this.questionBody == '' || this.range == '')
+                return false;
+            return true;
+        },
         Save() {
+            if(this.isValid()) {
 
+                let question = {
+                    Number: this.currentQuestion,
+                    Type: 4,
+                    Question: this.questionBody,
+                    Range: this.range
+                }
+                this.ADD_QUESTION(question);
+                this.INCREMENT_QUESTION_COUNTER(question);
+                this.questionBody = '';
+                this.range = '';
+            }
         },
         Cancel() {
+            this.questionBody = '';
+            this.range = '';
         }
     }
 }

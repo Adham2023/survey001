@@ -4,6 +4,7 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
+      expand-on-hover
       
     >
       <v-list dense  tile>
@@ -18,7 +19,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ item.text }}
+                {{ item.text == 'Projects' ? 'Projects  ' + $store.state.project_counter + '/3' : item.text }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -38,7 +39,7 @@
         class="ml-0 pl-4"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <span class="hidden-sm-and-down">Surveys Booster</span>
+        <span class="hidden-sm-and-down">R2</span>
       </v-toolbar-title>
       
       <v-spacer></v-spacer>
@@ -57,6 +58,9 @@
 // @ is an alias to /src
 
 export default {
+  mounted() {
+      console.log(this.$store.state.project_counter)
+  }, 
   name: 'home',
   components: {
   },
@@ -64,13 +68,18 @@ export default {
       dialog: false,
       drawer: null,
       routes: [
-        { icon: 'view_list', text: 'Projects', path: 'Projects'},
+        { icon: 'view_list', text: `Projects`, path: 'Projects'},
         { icon: 'add_circle_outline', text: 'New Project', path: 'newproject' },
         { icon: 'mdi-clipboard-account', text: 'Assignments', path: 'assignments'},
         { icon: 'bar_chart', text: 'Reports', path: 'reports' },
         { icon: 'person_add', text: 'New User', path: 'newuser' }
       ],
     }),
+    computed: {
+      pr_counter() {
+        return this.$store.state.project_counter;
+      }
+    },
     methods: {
       navigateTo(j) {
          this.$router.push({path: j})
