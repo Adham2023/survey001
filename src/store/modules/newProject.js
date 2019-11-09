@@ -9,15 +9,13 @@ const getters = {
     currentQuestion(state) {
         return state.question_counter;
     },
-    allQuestions(state) {
-        return state.Project[0].Questions;
-    },
     getQuestion: state =>  number =>  {
        
         let Questions = state.Questions;
         let len = Questions.length;
         for(let i = 0 ; i < len; i++) {
             if(Questions[i].Number == number ) {
+                console.log(Questions[i]);
                  return Questions[i];
             }
         }

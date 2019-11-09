@@ -78,13 +78,15 @@ import Multiple from './Questions/Multiple';
 import Single from './Questions/Single';
 import YesNo from './Questions/YesNo';
 import Range from './Questions/Range';
+import Txt from './Questions/Txt';
 import {mapActions} from 'vuex';
 export default {
   components: {
     Multiple,
     Single,
     YesNo,
-    Range
+    Range,
+    Txt
   },
    data() {
     return {
@@ -111,11 +113,13 @@ export default {
         this.SET_CONFIG_TO_QUESTION();
         this.question=0;
         this.skipQuestion = 0;
+        
       }
     }
   },
   mounted() {
-    this.questions = this.$store.getters.allQuestions;
+    this.questions = this.$store.state.newProject.Project[0].Questions 
+    console.log(this.$store.state.newProject.Project[0].Questions);
   },
  
   computed: {
@@ -132,7 +136,7 @@ export default {
               return 'Single';
               break;
             case 3:
-              return 'Text';
+              return 'Txt';
               break;
             case 4:
               return 'Range';
@@ -181,7 +185,7 @@ export default {
       })
     },
     SkipToQuestions() {
-      let q =  this.questions.filter(e => e.Type !== 6 || e.Type !== 3);
+      let q =  this.questions;
       return q.slice(this.question, q.length).map(e => {
         return {
           text: 'Question ' + e.Number,
