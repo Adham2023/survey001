@@ -102,9 +102,9 @@ export default {
                 
                 let question = {
                     Number: this.currentQuestion,
-                    type: 1,
+                    Type: 1,
                     Question: this.questionBody,
-                    Answer: this.possibleAnswers
+                    Answers: this.possibleAnswers
                 }
                 this.ADD_QUESTION(question);
                 this.INCREMENT_QUESTION_COUNTER();

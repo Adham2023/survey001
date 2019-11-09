@@ -1,15 +1,14 @@
 <template>
-  <v-card>
+  <v-card flat outlined>
       <v-card-title>
-          {{question.Question }}
+          {{question.Question +' ' + which}}
       </v-card-title>
       <v-card-text>
-        <span class="title">  IF:</span>
               <v-checkbox 
                             v-model="answers" 
                             :value="answer" 
                             :label="answer"
-                            v-for="(answer, i) in question.Answer"
+                            v-for="(answer, i) in question.Answers"
                             :key="i"
                 ></v-checkbox>
               
