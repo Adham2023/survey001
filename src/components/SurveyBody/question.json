@@ -4,45 +4,77 @@
         "Type": "Retail",
         "Questions": [
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 1,
-                "type": 1,
-                "Question": "M1 Question",
-                "Answer": [
+                "Type": 1,
+                "Question": "This is Multiple Choice Question Body",
+                "Answers": [
+                    "C",
                     "B",
                     "A"
                 ]
             },
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 2,
                 "Type": 2,
-                "Question": "S1 Question",
+                "Question": "This is Single Choice Question",
                 "Answers": [
+                    "C",
                     "B",
                     "A"
                 ]
             },
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 3,
                 "Type": 3,
                 "InputType": "number",
-                "Question": "T1"
+                "Question": "This is Text Answer Question"
             },
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 4,
                 "Type": 4,
-                "Question": "R1",
+                "Question": "This is Range Based Question",
                 "Range": "10"
             },
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 5,
                 "Type": 5,
-                "Question": "Yes Or No",
+                "Question": "This is Yes Or No Question!",
                 "Answers": [
                     1,
                     0
                 ]
             },
             {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
                 "Number": 6,
                 "Type": 6,
                 "productLabels": [
@@ -65,25 +97,109 @@
                         "id": 1,
                         "name": "Price",
                         "type": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "R2",
+        "Type": "Retail",
+        "Questions": [
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 1,
+                "Type": 1,
+                "Question": "This is Multiple Choice Question Body",
+                "Answers": [
+                    "C",
+                    "B",
+                    "A"
+                ]
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 2,
+                "Type": 2,
+                "Question": "This is Single Choice Question",
+                "Answers": [
+                    "C",
+                    "B",
+                    "A"
+                ]
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 3,
+                "Type": 3,
+                "InputType": "number",
+                "Question": "This is Text Answer Question"
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 4,
+                "Type": 4,
+                "Question": "This is Range Based Question",
+                "Range": "10"
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 5,
+                "Type": 5,
+                "Question": "This is Yes Or No Question!",
+                "Answers": [
+                    1,
+                    0
+                ]
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 6,
+                "Type": 6,
+                "productLabels": [
+                    {
+                        "id": 0,
+                        "text": "Pishgan"
                     },
                     {
-                        "id": 2,
-                        "name": "Size",
-                        "type": 3,
-                        "ddItems": [
-                            {
-                                "id": 0,
-                                "text": "Large"
-                            },
-                            {
-                                "id": 1,
-                                "text": "Medium"
-                            },
-                            {
-                                "id": 2,
-                                "text": "Small"
-                            }
-                        ]
+                        "id": 1,
+                        "text": "Pishmagan"
+                    }
+                ],
+                "columns": [
+                    {
+                        "id": 0,
+                        "name": "Available",
+                        "type": 1
+                    },
+                    {
+                        "id": 1,
+                        "name": "Price",
+                        "type": 2
                     }
                 ]
             }

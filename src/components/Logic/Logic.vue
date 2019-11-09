@@ -4,7 +4,7 @@
       <v-col cols="6">
         <v-card flat outlined>
           <v-card-title class="grey--text">
-            Question: {{question}}
+            Question: 
             <v-select
                 class="ml-5"
                 :items="allQuestions"
@@ -14,7 +14,7 @@
               ></v-select>
           </v-card-title>
           <v-card-text>
-            <component :is="'Multiple'" :which="question" />
+            <component :is="currentQuestion" child="false" parent="true" :which="question" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -31,7 +31,7 @@
               ></v-select>
           </v-card-title>
           <v-card-text>
-             <component :is="skipToQuestion" :which="skipQuestion" />
+             <component :is="skipToQuestion" child="true" :parent="question" :which="skipQuestion" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -49,6 +49,7 @@
                   <v-select
                     :items="operators"
                     outlined
+                    @change="setOperator"
                     label="operators"
                   ></v-select>
                 </v-col>
@@ -75,16 +76,22 @@
 <script>
 import Multiple from './Questions/Multiple';
 import Single from './Questions/Single';
-import Text from './Questions/Text';
 import YesNo from './Questions/YesNo';
 import Range from './Questions/Range';
+import {mapActions} from 'vuex';
 export default {
   components: {
     Multiple,
     Single,
-    Text,
     YesNo,
     Range
+  },
+  methods: {
+    ...mapActions(['CURRENT_QUESTION', 'SKIP_TO_QUESTION', 'OPERATOR']),
+    setOperator(e) {
+      this.OPERATOR(e);
+      console.log(e);
+    }
   },
   mounted() {
     this.questions = this.$store.getters.allQuestions;
@@ -94,12 +101,20 @@ export default {
       question: 0,
       questions: [],
       skipQuestion: 0,
-      operators: ['AND', 'OR', 'NOT', 'EQUAL']
+      operators: [
+        {text:'and', value: "&"},
+        {text: 'or', value: '|'}, 
+        {text: 'not', value: '!'}, 
+        {text: 'equal', value: '='}, 
+        {text: 'less than', value: '<'}, 
+        {text: 'greater than', value: '>'}
+      ]
     }
   },
   computed: {
     skipToQuestion() {
       if(this.skipQuestion) {
+        this.SKIP_TO_QUESTION(this.skipQuestion);
         let questionType = this.questions.find(i => i.Number == this.skipQuestion).Type;
         console.log(questionType);
           switch(questionType) {
@@ -124,6 +139,7 @@ export default {
     },
     currentQuestion() {
       if(this.question) {
+        this.CURRENT_QUESTION(this.question);
         let questionType = this.questions.find(i => i.Number == this.question).Type;
         console.log(questionType);
           switch(questionType) {
@@ -147,15 +163,17 @@ export default {
       }
     },
     allQuestions() {
-      return this.questions.map(e =>  {
-        return { 
-          text: 'Question ' + e.Number, 
+      let q =  this.questions.filter(e => e.Type !== 6 || e.Type !== 3 );
+      return q.map(e => {
+        return {
+          text: 'Question ' + e.Number,
           value: e.Number
         }
       })
     },
     SkipToQuestions() {
-      return this.questions.slice(this.question, this.questions.length).map(e => {
+      let q =  this.questions.filter(e => e.Type !== 6 || e.Type !== 3);
+      return q.slice(this.question, q.length).map(e => {
         return {
           text: 'Question ' + e.Number,
           value: e.Number 

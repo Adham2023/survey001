@@ -260,6 +260,11 @@ import {mapActions, mapGetters} from 'vuex';
       },
      Save() {
        let Matrix = {
+         config: {
+           isChild:null, 
+           isParent: null,
+           Rule: null
+         },
          Number: this.currentQuestion,
          Type: 6,
          productLabels: this.productLabels,

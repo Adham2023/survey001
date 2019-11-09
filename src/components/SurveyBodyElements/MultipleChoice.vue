@@ -101,6 +101,11 @@ export default {
             if(this.isValid()) {
                 
                 let question = {
+                    config: {
+                        isChild:null, 
+                        isParent: null,
+                        Rule: null
+                    },
                     Number: this.currentQuestion,
                     Type: 1,
                     Question: this.questionBody,
