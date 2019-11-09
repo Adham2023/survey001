@@ -10,9 +10,9 @@
         
       </v-col>
     </v-row>
-    <v-row justify="center" class="red" >
+    <v-row justify="center" class="" >
       <v-col cols="1" class="">
-        <v-btn class="primary white--text">
+        <v-btn @click="Next" text class="primary white--text">
           <span>Next</span>
         </v-btn>
       </v-col>
@@ -21,8 +21,27 @@
 </template>
 
 <script>
+import {mapGetters, mapState} from 'vuex';
 export default {
+    mounted() {
+      this.Project = this.$store.state.newProject.Project;
+      console.log('TestView: ', this.Project[0].Questions);
+    },
+    data() {
+      return {
+        Project: [],
+      }
+    },
+    computed: {
+        Questions() {
+          return this.Project[0].Questions;
+        }
+    },
+    methods: {
+      Next() {
 
+      }
+    },
 }
 </script>
 
