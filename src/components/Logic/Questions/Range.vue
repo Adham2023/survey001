@@ -3,27 +3,27 @@
       <v-card-title>
           {{question.Question }}
       </v-card-title>
-      <v-card-text>
-                <v-radio-group v-model="answers" :mandatory="false">
-                    <v-radio disabled :label="answer"  
-                                v-for="(answer, i) in question.Answers" 
-                                :key="i"
-                                 :value="answer">
-                                </v-radio>
-                    
-                </v-radio-group>
-              
+      <v-card-text v-if="!isSkiping">
+          <v-text-field v-model="answer"></v-text-field>
       </v-card-text>
   </v-card>
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 export default {
-    props: ['which'],
+    props: {
+        which: {
+            type: Number
+        },
+        isSkiping: {
+            type: Boolean,
+            default: false
+        }
+    },
     data() {
         return {
-            answers: 'A',
+            answer: '',
         }
     },
     computed: {

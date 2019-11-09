@@ -3,9 +3,10 @@
       <v-card-title>
           {{question.Question +' ' + which}}
       </v-card-title>
-      <v-card-text>
+      <v-card-text v-if="!isSkiping">
               <v-checkbox 
                             v-model="answers" 
+                            @change="Answered"
                             :value="answer" 
                             :label="answer"
                             v-for="(answer, i) in question.Answers"
@@ -17,9 +18,17 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 export default {
-    props: ['which'],
+    props: {
+        which: {
+            type: Number
+        },
+        isSkiping: {
+            type: Boolean,
+            default: false
+        }
+    },
     data() {
         return {
             answers: [],
@@ -28,6 +37,13 @@ export default {
     computed: {
         question() {
             return this.$store.getters.getQuestion(this.which);
+        }
+    },
+    methods: {
+        ...mapActions(['ANSWERS']),
+        Answered(e) {
+            console.log(e);
+            this.ANSWERS(e);
         }
     }
 

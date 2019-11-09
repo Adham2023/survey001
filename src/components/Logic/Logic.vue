@@ -31,7 +31,7 @@
               ></v-select>
           </v-card-title>
           <v-card-text>
-             <component :is="skipToQuestion" child="true" :parent="question" :which="skipQuestion" />
+             <component :is="skipToQuestion" :isSkiping="true" child="true" :parent="question" :which="skipQuestion" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -60,7 +60,7 @@
           
           </v-card-text>
           <v-card-actions class="d-flex justify-center align-center">
-            <v-btn class="blue white--text">
+            <v-btn @click="Apply" class="blue white--text">
               <span>Apply</span>
             </v-btn>
           </v-card-actions>
@@ -86,17 +86,7 @@ export default {
     YesNo,
     Range
   },
-  methods: {
-    ...mapActions(['CURRENT_QUESTION', 'SKIP_TO_QUESTION', 'OPERATOR']),
-    setOperator(e) {
-      this.OPERATOR(e);
-      console.log(e);
-    }
-  },
-  mounted() {
-    this.questions = this.$store.getters.allQuestions;
-  },
-  data() {
+   data() {
     return {
       question: 0,
       questions: [],
@@ -111,6 +101,23 @@ export default {
       ]
     }
   },
+  methods: {
+    ...mapActions(['CURRENT_QUESTION', 'SKIP_TO_QUESTION', 'OPERATOR', 'MAKE_RULE', 'SET_CONFIG_TO_QUESTION']),
+    setOperator(e) {
+      this.OPERATOR(e);
+      console.log(e);
+    },
+    Apply() {
+      this.MAKE_RULE();
+      this.SET_CONFIG_TO_QUESTION();
+      this.question=0;
+      this.skipQuestion = 0;
+    }
+  },
+  mounted() {
+    this.questions = this.$store.getters.allQuestions;
+  },
+ 
   computed: {
     skipToQuestion() {
       if(this.skipQuestion) {

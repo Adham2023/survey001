@@ -17,15 +17,18 @@ const mutations = {
         state.skipToQuestion = question;
     },
     ANSWERS(state, answers) {
-        state.answers = answers;
+        console.log('Mutation ', answers);
+        state.Answers = answers;
     },
     OPERATOR(state, operator) {
         state.operator = operator;
     },
     SET_RULE(state, rule) {
         state.Rule = rule
+    },
+    SET_CONFIG_TO_QUESTION(state) {
+        
     }
-    
    
 }
 const actions = {
@@ -36,6 +39,7 @@ const actions = {
         context.commit('SKIP_TO_QUESTION', question);
     },
     ANSWERS(context, answers) {
+        console.log('Actions ' , answers);
         context.commit('ANSWERS', answers);
     },
     OPERATOR(context, operator) {
@@ -46,6 +50,21 @@ const actions = {
         let op = state.operator;
         let Rule = op + '' + answers;
         commit('SET_RULE', Rule);
+    },
+    SET_CONFIG_TO_QUESTION({state, rootState}) {
+        console.log(rootState);
+        let config = {
+            isChild: true,
+            isParent: state.currentQuestion,
+            Rule: state.Rule
+        };
+        let len = rootState.newProject.Project[0].Questions.length;
+        for(let i = 0; i < len; i++) {
+            if(state.skipToQuestion === rootState.newProject.Project[0].Questions[i].Number) {
+                rootState.newProject.Project[0].Questions[i].config = config;
+                i = len;
+            }
+        }
     }
 
 }
