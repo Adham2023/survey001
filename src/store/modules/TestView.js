@@ -8,7 +8,10 @@ const getters = {
 
 const mutations = {
     SET_ANSWER(state, answer) {
-        state.givenAnswers.push(answer);
+        state.givenAnswers.push({
+            question: answer.question, 
+            answers: answer.answers
+        });
     }
 }
 

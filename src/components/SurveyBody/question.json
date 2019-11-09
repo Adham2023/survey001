@@ -1,48 +1,48 @@
 [
     {
-        "Title": "R2",
+        "Title": "w",
         "Type": "Retail",
         "Questions": [
             {
                 "config": {
-                    "isChild": null,
-                    "isParent": null,
+                    "isChild": false,
+                    "isParent": true,
                     "Rule": null
                 },
                 "Number": 1,
                 "Type": 1,
-                "Question": "This is Multiple Choice Question Body",
+                "Question": "M2",
                 "Answers": [
                     "C",
                     "B",
-                    "A"
+                    "a"
                 ]
             },
             {
                 "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
+                    "isChild": true,
+                    "isParent": 1,
+                    "Rule": "&C,B"
                 },
                 "Number": 2,
                 "Type": 2,
-                "Question": "This is Single Choice Question",
+                "Question": "QWERT",
                 "Answers": [
-                    "C",
-                    "B",
-                    "A"
+                    "q",
+                    "q",
+                    "q"
                 ]
             },
             {
                 "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
+                    "isChild": true,
+                    "isParent": 1,
+                    "Rule": "|C,B"
                 },
                 "Number": 3,
                 "Type": 3,
                 "InputType": "number",
-                "Question": "This is Text Answer Question"
+                "Question": "This is text input"
             },
             {
                 "config": {
@@ -51,40 +51,19 @@
                     "Rule": null
                 },
                 "Number": 4,
-                "Type": 4,
-                "Question": "This is Range Based Question",
-                "Range": "10"
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 5,
-                "Type": 5,
-                "Question": "This is Yes Or No Question!",
-                "Answers": [
-                    1,
-                    0
-                ]
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 6,
                 "Type": 6,
                 "productLabels": [
                     {
                         "id": 0,
-                        "text": "Pishgan"
+                        "text": "Snikers"
                     },
                     {
                         "id": 1,
-                        "text": "Pishmagan"
+                        "text": "Mars"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Twix"
                     }
                 ],
                 "columns": [
@@ -97,29 +76,32 @@
                         "id": 1,
                         "name": "Price",
                         "type": 2
+                    },
+                    {
+                        "id": 2,
+                        "name": "Remaining",
+                        "type": 2
+                    },
+                    {
+                        "id": 3,
+                        "name": "Size",
+                        "type": 3,
+                        "ddItems": [
+                            {
+                                "id": 0,
+                                "text": "Large"
+                            },
+                            {
+                                "id": 1,
+                                "text": "Medium"
+                            },
+                            {
+                                "id": 2,
+                                "text": "Small"
+                            }
+                        ]
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "Title": "R2",
-        "Type": "Retail",
-        "Questions": [
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 1,
-                "Type": 1,
-                "Question": "This is Multiple Choice Question Body",
-                "Answers": [
-                    "C",
-                    "B",
-                    "A"
-                ]
             },
             {
                 "config": {
@@ -127,67 +109,22 @@
                     "isParent": null,
                     "Rule": null
                 },
-                "Number": 2,
-                "Type": 2,
-                "Question": "This is Single Choice Question",
-                "Answers": [
-                    "C",
-                    "B",
-                    "A"
-                ]
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 3,
-                "Type": 3,
-                "InputType": "number",
-                "Question": "This is Text Answer Question"
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 4,
-                "Type": 4,
-                "Question": "This is Range Based Question",
-                "Range": "10"
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
+                "Title": "Another Snikers",
                 "Number": 5,
-                "Type": 5,
-                "Question": "This is Yes Or No Question!",
-                "Answers": [
-                    1,
-                    0
-                ]
-            },
-            {
-                "config": {
-                    "isChild": null,
-                    "isParent": null,
-                    "Rule": null
-                },
-                "Number": 6,
                 "Type": 6,
+                "Question": null,
                 "productLabels": [
                     {
                         "id": 0,
-                        "text": "Pishgan"
+                        "text": "Snikers"
                     },
                     {
                         "id": 1,
-                        "text": "Pishmagan"
+                        "text": "Mars"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Twix"
                     }
                 ],
                 "columns": [
@@ -199,6 +136,159 @@
                     {
                         "id": 1,
                         "name": "Price",
+                        "type": 2
+                    },
+                    {
+                        "id": 2,
+                        "name": "Remaining",
+                        "type": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "w",
+        "Type": "Retail",
+        "Questions": [
+            {
+                "config": {
+                    "isChild": false,
+                    "isParent": true,
+                    "Rule": null
+                },
+                "Number": 1,
+                "Type": 1,
+                "Question": "M2",
+                "Answers": [
+                    "C",
+                    "B",
+                    "a"
+                ]
+            },
+            {
+                "config": {
+                    "isChild": true,
+                    "isParent": 1,
+                    "Rule": "&C,B"
+                },
+                "Number": 2,
+                "Type": 2,
+                "Question": "QWERT",
+                "Answers": [
+                    "q",
+                    "q",
+                    "q"
+                ]
+            },
+            {
+                "config": {
+                    "isChild": true,
+                    "isParent": 1,
+                    "Rule": "|C,B"
+                },
+                "Number": 3,
+                "Type": 3,
+                "InputType": "number",
+                "Question": "This is text input"
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Number": 4,
+                "Type": 6,
+                "productLabels": [
+                    {
+                        "id": 0,
+                        "text": "Snikers"
+                    },
+                    {
+                        "id": 1,
+                        "text": "Mars"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Twix"
+                    }
+                ],
+                "columns": [
+                    {
+                        "id": 0,
+                        "name": "Available",
+                        "type": 1
+                    },
+                    {
+                        "id": 1,
+                        "name": "Price",
+                        "type": 2
+                    },
+                    {
+                        "id": 2,
+                        "name": "Remaining",
+                        "type": 2
+                    },
+                    {
+                        "id": 3,
+                        "name": "Size",
+                        "type": 3,
+                        "ddItems": [
+                            {
+                                "id": 0,
+                                "text": "Large"
+                            },
+                            {
+                                "id": 1,
+                                "text": "Medium"
+                            },
+                            {
+                                "id": 2,
+                                "text": "Small"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "config": {
+                    "isChild": null,
+                    "isParent": null,
+                    "Rule": null
+                },
+                "Title": "Another Snikers",
+                "Number": 5,
+                "Type": 6,
+                "Question": null,
+                "productLabels": [
+                    {
+                        "id": 0,
+                        "text": "Snikers"
+                    },
+                    {
+                        "id": 1,
+                        "text": "Mars"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Twix"
+                    }
+                ],
+                "columns": [
+                    {
+                        "id": 0,
+                        "name": "Available",
+                        "type": 1
+                    },
+                    {
+                        "id": 1,
+                        "name": "Price",
+                        "type": 2
+                    },
+                    {
+                        "id": 2,
+                        "name": "Remaining",
                         "type": 2
                     }
                 ]

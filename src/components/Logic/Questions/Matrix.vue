@@ -1,17 +1,10 @@
 <template>
   <v-card flat outlined>
       <v-card-title>
-          {{question.Question }}
+          {{question.Title }}
       </v-card-title>
       <v-card-text v-if="!isSkiping">
-              <v-checkbox 
-                            v-model="answers" 
-                            @change="Answered"
-                            :value="answer" 
-                            :label="answer"
-                            v-for="(answer, i) in question.Answers"
-                            :key="i"
-                ></v-checkbox>
+             
               
       </v-card-text>
   </v-card>

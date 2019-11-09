@@ -1,10 +1,10 @@
 <template>
-  <v-container class="" height="80vh">
+  <v-container class="" height="80vh" >
     <v-row justify="center" >
       <v-col cols="6" >
-        <v-card flat height="400px">
+        <v-card flat height="400px" width="600px" style="overflow-x: auto; overflow-y: auto;">
           <v-card-text>
-            <component :is="'Multiple'" />
+            <component :is="'Matrix'" @onMultipleChng="answerFromMultiple" />
           </v-card-text>
         </v-card>
         
@@ -12,7 +12,7 @@
     </v-row>
     <v-row justify="center" class="" >
       <v-col cols="1" class="">
-        <v-btn @click="Next" text class="primary white--text">
+        <v-btn @click="Next"  text class="primary white--text">
           <span>Next</span>
         </v-btn>
       </v-col>
@@ -39,16 +39,16 @@ export default {
       YesNo
     },
     mounted() {
-      this.Project = this.$store.state.newProject.Project;
-      console.log('TestView: ', this.$store.state.newProject.Project);
-      this.QLength = this.Project[0].Questions.length;
+      this.Project = this.$store.state.newProject.Questions;
+      console.log('TestView: ', this.$store.state.newProject.Questions);
+      this.QLength = this.Project.length;
       this.Question(1);
     },
     data() {
       return {
         Project: [],
-
-        Q: null,
+        Answer: null,
+        Qs: null,
         QLength: null,
         currentQuestionType: '',
         currentQuestionNumber: 0,
@@ -56,15 +56,20 @@ export default {
     },
     computed: {
         Questions() {
-          return this.Project[0].Questions;
+          return this.Project;
         }
     },
     methods: {
+
+      answerFromMultiple(e) {
+        this.Answer = e;
+        console.log('P ' , e);
+      },
       Next() {
         this.currentQuestionNumber++;
       },
       Question(n) {
-        let Q = this.Project[0].Questions[n];
+        var Q = this.Project[n];
         let MyConfig = Q.config;
         if(MyConfig.isParent == true) {
           return n;
@@ -72,7 +77,7 @@ export default {
           let P_A = this.myParentAnswer(MyConfig.isParent, MyConfig.Rule);
           while(P_A == false && n < this.QLength) {
             n++;
-            Q = this.Project[0].Questions[n];
+            Q = this.Project[n];
             MyConfig  = Q.config;
             P_A = this.myParentAnswer(MyConfig.isParent, MyConfig.Rule);
           }
@@ -83,7 +88,7 @@ export default {
         console.log(ss);
       },
       getAnswerOf(parent) {
-
+        return 
       },
       myParentAnswer(Parent, Rule) { // this will return Answers for a Asked child
         let P_Answer = this.getAnswerOf(Parent);
@@ -119,7 +124,6 @@ export default {
           default:
             break;
         }
-        return // Answer
       }
     },
 }

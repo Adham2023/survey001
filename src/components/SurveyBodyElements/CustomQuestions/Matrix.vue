@@ -4,6 +4,13 @@
           Q{{currentQuestion}}.
         </v-card-title>
        <v-container >
+         <v-row>
+           <v-col>
+             <v-text-field outlined v-model="title" label="Title">
+
+             </v-text-field>
+           </v-col>
+         </v-row>
          <v-row no-gutters justify-space-around align-content="end">
            <v-col class="pa-0">
              <v-card md="6" class="pa-0" flat >
@@ -189,6 +196,7 @@ import {mapActions, mapGetters} from 'vuex';
         columnName: '',
         columnType: '',
         column: [],
+        title: '',
         DDItem: '',
         DDItems: [],
         productLabels: [],
@@ -265,8 +273,10 @@ import {mapActions, mapGetters} from 'vuex';
            isParent: null,
            Rule: null
          },
+         Title: this.title,
          Number: this.currentQuestion,
          Type: 6,
+         Question: null,
          productLabels: this.productLabels,
          columns: this.column
        }

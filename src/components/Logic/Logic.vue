@@ -38,7 +38,7 @@
     </v-row>
     <v-row>
       <v-col >
-        <v-card flat>
+        <v-card flat outlined>
           <v-card-title class="grey--text">
             <v-container>
               <v-row justify="start">
@@ -49,6 +49,7 @@
                   <v-select
                     :items="operators"
                     outlined
+                    v-model="oprt"
                     @change="setOperator"
                     label="operators"
                   ></v-select>
@@ -79,6 +80,7 @@ import Single from './Questions/Single';
 import YesNo from './Questions/YesNo';
 import Range from './Questions/Range';
 import Txt from './Questions/Txt';
+import Matrix from './Questions/Matrix';
 import {mapActions} from 'vuex';
 export default {
   components: {
@@ -86,11 +88,13 @@ export default {
     Single,
     YesNo,
     Range,
-    Txt
+    Txt,
+    Matrix
   },
    data() {
     return {
       question: 0,
+      oprt: '',
       questions: [],
       skipQuestion: 0,
       operators: [
@@ -104,22 +108,23 @@ export default {
   methods: {
     ...mapActions(['CURRENT_QUESTION', 'SKIP_TO_QUESTION', 'OPERATOR', 'MAKE_RULE', 'SET_CONFIG_TO_QUESTION']),
     setOperator(e) {
-      this.OPERATOR(e);
-      console.log(e);
+      this.OPERATOR(this.oprt);
+      console.log(this.oprt);
     },
     Apply() {
-      if(this.question !=0 && this.skipQuestion !=0) {
+      // if(this.question !=0 && this.skipQuestion !=0) {
         this.MAKE_RULE();
         this.SET_CONFIG_TO_QUESTION();
         this.question=0;
+        this.oprt = '';
         this.skipQuestion = 0;
         
-      }
+      // }
     }
   },
   mounted() {
-    this.questions = this.$store.state.newProject.Project[0].Questions 
-    console.log(this.$store.state.newProject.Project[0].Questions);
+    this.questions = this.$store.state.newProject.Questions 
+    console.log('Logic: ' , this.$store.state.newProject.Questions);
   },
  
   computed: {
@@ -143,6 +148,9 @@ export default {
               break;
             case 5:
               return 'YesNo';
+              break;
+            case 6:
+              return 'Matrix';
               break;
             
           }
