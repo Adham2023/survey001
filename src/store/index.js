@@ -3,13 +3,15 @@ import Vuex from 'vuex'
 import { auth } from './modules/auth'
 import { newProject } from './modules/newProject';
 import {Logic} from './modules/Logic';
+import {TestView} from './modules/TestView';
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     modules: {
         auth,
         newProject,
-        Logic
+        Logic,
+        TestView
     },
     state: {
         project_counter: 0,

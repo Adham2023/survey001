@@ -14,7 +14,7 @@
               ></v-select>
           </v-card-title>
           <v-card-text>
-            <component :is="currentQuestion" child="false" parent="true" :which="question" />
+            <component :is="currentQuestion" :isSkiping="false" child="false" parent="true" :which="question" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -95,9 +95,7 @@ export default {
         {text:'and', value: "&"},
         {text: 'or', value: '|'}, 
         {text: 'not', value: '!'}, 
-        {text: 'equal', value: '='}, 
-        {text: 'less than', value: '<'}, 
-        {text: 'greater than', value: '>'}
+        {text: 'equal', value: '='},
       ]
     }
   },
@@ -108,10 +106,12 @@ export default {
       console.log(e);
     },
     Apply() {
-      this.MAKE_RULE();
-      this.SET_CONFIG_TO_QUESTION();
-      this.question=0;
-      this.skipQuestion = 0;
+      if(this.question !=0 && this.skipQuestion !=0) {
+        this.MAKE_RULE();
+        this.SET_CONFIG_TO_QUESTION();
+        this.question=0;
+        this.skipQuestion = 0;
+      }
     }
   },
   mounted() {
@@ -145,6 +145,7 @@ export default {
       }
     },
     currentQuestion() {
+      console.log('question: ', this.question);
       if(this.question) {
         this.CURRENT_QUESTION(this.question);
         let questionType = this.questions.find(i => i.Number == this.question).Type;
@@ -170,7 +171,8 @@ export default {
       }
     },
     allQuestions() {
-      let q =  this.questions.filter(e => e.Type !== 6 || e.Type !== 3 );
+      let q =  this.questions.filter(e => e.Type !== 6 && e.Type !== 3 && e.Type != 4); // bu yerda mana text input, Range, Va MAtrix uchun logic skipni ishlatmaslik uchun atdim
+      console.log('q: ', q);
       return q.map(e => {
         return {
           text: 'Question ' + e.Number,

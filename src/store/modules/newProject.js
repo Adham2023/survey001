@@ -10,7 +10,7 @@ const getters = {
         return state.question_counter;
     },
     allQuestions(state) {
-        return state.Questions;
+        return state.Project[0].Questions;
     },
     getQuestion: state =>  number =>  {
        
