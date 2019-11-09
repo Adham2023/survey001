@@ -1,7 +1,7 @@
 <template>
   <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; height: 80vh;">
         <v-card-title > 
-          Q{{currentQuestion}}.) Matrix based Question
+          Q{{currentQuestion}}.
         </v-card-title>
        <v-container >
          <v-row no-gutters justify-space-around align-content="end">

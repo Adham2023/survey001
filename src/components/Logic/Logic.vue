@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container style="overflow-x: auto; overflow-y: auto; height: 90vh;">
     <v-row>
       <v-col cols="6">
         <v-card flat outlined>

@@ -1,7 +1,7 @@
 <template>
   <v-card class="flex-grow-1 pa-8"  style="overflow-x: auto; overflow-y: auto; height: 80vh;">
   
-    <v-card-title >Q{{currentQuestion}}.) Yes No Question</v-card-title>
+    <v-card-title >Q{{currentQuestion}}.</v-card-title>
     <v-card-text>
         <v-container>
             <v-row>
