@@ -14,16 +14,14 @@
         <tr v-for="(item, i) in 5" :key="i">
             <td>Snikers</td>
           <td>
-              <v-switch v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"></v-switch>
+              <component :is="'Swtch'" />
+              <!-- <v-switch value input-value="true"></v-switch> -->
           </td>
           <td>
-              <v-text-field placeholder="price">
-              </v-text-field>
+              <component :is="'Txt'" placeHolder="price" />
           </td>
           <td>
-              <v-select :items="sizes" v-model="size" outlined>
-
-              </v-select>
+              <component :is="'Slect'" :selectionItems="sizes"/>
           </td>
         </tr>
       </tbody>
@@ -33,7 +31,15 @@
 </template>
 
 <script>
+import Slect from './MatrixComponents/Slect';
+import Swtch from './MatrixComponents/Switch';
+import Txt from './MatrixComponents/Txt';
   export default {
+    components: {
+      Slect,
+      Swtch,
+      Txt
+    },
     data () {
       return {
           switch1: true,

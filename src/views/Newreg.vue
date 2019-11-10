@@ -2,13 +2,7 @@
     <v-container
         class="fill-height"
         fluid
-      >
-
-    <!-- <v-row  align="center"
-          justify="center">
-                <h2 class="h2">Register New User</h2>
-    </v-row>      -->
-
+      > 
         <v-row
           align="center"
           justify="center"
@@ -22,6 +16,55 @@
                Register new User
               </v-card-title>
               <v-card-text>
+                <v-container  class="pa-0 ma-0">
+                  <v-row>
+                    <v-col>
+                      Branch: {{brachProp }}
+                    </v-col>
+                    <v-col>
+                      <v-select
+                        outlined
+                        :items="branches"
+                        v-model="branch"
+                        label="Branches"
+                      >
+
+                      </v-select>
+                    </v-col>
+                  </v-row>
+                  <v-row class="pa-0" align="center" >
+                    <v-col class="">
+                     Raqam: {{raqamProp + ' len : ' + rs.length}}
+
+                    </v-col>
+                    <v-col>
+                      <v-select
+                      
+                        outlined
+                        label="Raqamlar"
+                        :items="rs"
+                        v-model="raqam"
+                      >
+
+                      </v-select>
+                    </v-col>
+                  </v-row>
+                  <v-row class="pa-0" align="center" >
+                    <v-col>
+                      Role: {{RoleProp}}
+                    </v-col>
+                    <v-col>
+                      <v-select
+                         outlined
+                        label="Role"
+                        :items="roles"
+                        v-model="role"
+                      >
+
+                      </v-select>
+                    </v-col>
+                  </v-row>
+                </v-container>
                 <v-form>
                     <v-text-field
                     label="First Name"
@@ -35,19 +78,6 @@
                     type="text"
                     v-model="secondname"
                   ></v-text-field>
-                  <v-text-field
-                    label="Username"
-                    name="username"
-                    type="text"
-                    v-model="username"
-                  ></v-text-field>
-                  <v-text-field
-                    label="ID"
-                    name="ID"
-                    type="text"
-                    v-model="ID"
-                  ></v-text-field>
-
                   <v-text-field
                     id="password"
                     label="Create a Password"
@@ -69,7 +99,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="primary ma-3">Cancel</v-btn>
-                <v-btn color="primary ma-3">Register</v-btn>
+                <v-btn @click="Register" color="primary ma-3">Register</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -81,13 +111,28 @@
 
 <script>
 // @ is an alias to /src
-
+import axios from 'axios';
 export default {
   name: 'user',
+  mounted() {
+    
+    /* getting ucell number */
+    this.getNumber();
+    this.getBranches();
+  },
   components: {
   },
   data() {
       return {
+          role:'',
+          branches: [],
+          branch: '',
+          roles: [
+            {text: "Admin", value: 0},
+            {text: "Agent", value: 1}
+          ],
+          raqam:"",
+          rs: [],
           username: '',
           password: '',
           confirm_password: '',
@@ -95,6 +140,132 @@ export default {
           secondname: '',
           ID: ''
       }
-  }
+  },
+  computed: {
+    RoleProp() {
+      return this.roles.find(e => e.value == this.role).text;
+    },
+    raqamProp() {
+      let r = this.raqam;
+      console.log("find: ", this.rs.find(e => e.value ==r))
+      let a = '';
+      
+      if(this.rs.find(e => e.value == r) != undefined){
+         return this.rs.find(e => e.value == r).text;
+      }
+      return a;
+    },
+    brachProp() {
+      let r = this.branch;
+      console.log("brach find: ", this.branches.find(e => e.value ==r))
+      let a = '';
+      console.log("branches: ", this.branches);
+      if(this.branches.find(e => e.value == r) != undefined){
+         return this.branches.find(e => e.value == r).text;
+      }
+      return a;
+    }
+
+  },
+  methods: {
+    getBranches() {
+      axios({
+        url: "http://192.168.43.167:4000",
+        method: "POST",
+        data: {
+          query: `
+            {
+                branches {
+                    pk
+                    name
+                    code
+                }
+            } 
+          `
+        }
+      })
+      .then(result => {
+        
+        result.data.data.branches.forEach(item => {
+          this.branches.push({
+            text: ""+item.name,
+            value: item.pk
+          })
+        })
+        console.log(this.branches);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    },
+    Register() {
+      axios( {
+        url: "http://192.168.43.167:4000",
+        method: "POST",
+        data: {
+          query: `
+            mutation {
+                createUser(
+                    input: {
+                        branch: ${this.branch}
+                        subscriber: ${this.raqam}
+                        password: "${this.password}"
+                        role: ${this.role}
+                        firstName: "${this.firstname}"
+                        lastName: "${this.secondname}"
+                    }
+                ) {
+                    pk
+                }
+            }
+          `
+        }
+      }).then(result => {
+        console.log(result.data.data);
+        this.firstname = '';
+        this.secondname = '';
+        this.role = '';
+        this.raqam = '';
+        this.branch = '';
+        this.password = '';
+        this.confirm_password = '';
+      }).catch(e => {
+        console.log('error')
+      })
+    },
+    getNumber() {
+      axios({
+        url: 'http://192.168.43.167:4000',
+        method: 'POST',
+        data: {
+          query: ` 
+              {
+                  subscribers(joined: false) {
+                      pk
+                      number
+                      joined
+                  }
+              }
+        `
+        }
+      })
+      .then(result => {
+        let res = result.data.data.subscribers;
+        // this.rs = [];
+        res.forEach(element => {
+            this.rs.push( {
+              text: ""+element.number,
+              value: element.pk
+            })
+        });
+        console.log("rs: ", this.rs);
+        console.log(result.data.data.subscribers);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    }
+  },
+  
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <h2>Range</h2>
+    <h2>Subcription Details</h2>
 </template>
 
 <script>

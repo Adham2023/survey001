@@ -4,7 +4,7 @@
       <v-col cols="6" >
         <v-card flat height="400px" width="600px" style="overflow-x: auto; overflow-y: auto;">
           <v-card-text>
-            <component :is="'Matrix'" @onMultipleChng="answerFromMultiple" />
+            <component :is="currentQuestion" @onMultipleChng="answerFromMultiple" />
           </v-card-text>
         </v-card>
         
@@ -26,8 +26,9 @@ import Matrix from './TestViewComponents/Matrix';
 import Multiple from './TestViewComponents/Multiple';
 import Radio from './TestViewComponents/Radio';
 import Range from './TestViewComponents/Range';
-import Text from './TestViewComponents/Text';
+import Txt from './TestViewComponents/Txt';
 import YesNo from './TestViewComponents/YesNo';
+import Thanks from './TestViewComponents/Thanks';
 
 export default {
     components: {
@@ -35,28 +36,51 @@ export default {
       Multiple,
       Radio,
       Range,
-      Text,
-      YesNo
+      Txt,
+      YesNo,
+      Thanks
     },
     mounted() {
-      this.Project = this.$store.state.newProject.Questions;
+      this.allQuestions = this.$store.state.newProject.Questions;
       console.log('TestView: ', this.$store.state.newProject.Questions);
-      this.QLength = this.Project.length;
+      this.QLength = this.allQuestions.length;
       this.Question(1);
     },
     data() {
       return {
-        Project: [],
+        allQuestions: [],
         Answer: null,
         Qs: null,
         QLength: null,
-        currentQuestionType: '',
+        currentQuestionType: 1,
         currentQuestionNumber: 0,
       }
     },
     computed: {
         Questions() {
           return this.Project;
+        },
+        currentQuestion: {
+          set: (p)  => {
+            return p;
+          },
+          get: function() {
+            switch(this.currentQuestionType) {
+            case 1: 
+              return 'Multiple';
+              break;
+            case 2: 
+              return 'Radio';
+            case 3: 
+              return 'Txt';
+            case 4: 
+              return 'Range';
+            case 5: 
+              return 'YesNo';
+            case 6: 
+              return 'Matrix';
+          }
+          }
         }
     },
     methods: {
@@ -67,9 +91,20 @@ export default {
       },
       Next() {
         this.currentQuestionNumber++;
+        if(this.currentQuestionNumber < this.QLength) {
+          this.currentQuestionNumber = this.Question(this.currentQuestionNumber);
+          console.log('this Current Question Number ', this.currentQuestionNumber);
+          this.currentQuestionType = this.allQuestions[this.currentQuestionNumber].Type;
+          console.log('Next: ', this.currentQuestionType);
+          if(this.currentQuestionNumber >= this.QLength) 
+            this.currentQuestion = 'Thanks';
+        }else {
+          this.currentQuestion = 'Thanks';
+        }
+
       },
       Question(n) {
-        var Q = this.Project[n];
+        var Q = this.allQuestions[n];
         let MyConfig = Q.config;
         if(MyConfig.isParent == true) {
           return n;
@@ -77,8 +112,9 @@ export default {
           let P_A = this.myParentAnswer(MyConfig.isParent, MyConfig.Rule);
           while(P_A == false && n < this.QLength) {
             n++;
-            Q = this.Project[n];
-            MyConfig  = Q.config;
+            console.log('In While ' , n );
+            Q = this.allQuestions[n];
+            MyConfig = Q.config;
             P_A = this.myParentAnswer(MyConfig.isParent, MyConfig.Rule);
           }
           return n;
@@ -91,7 +127,7 @@ export default {
         return 
       },
       myParentAnswer(Parent, Rule) { // this will return Answers for a Asked child
-        let P_Answer = this.getAnswerOf(Parent);
+        let P_Answer = ['A', 'B'] //this.getAnswerOf(Parent);
         switch (Rule[0]) {
           
           case '=': 

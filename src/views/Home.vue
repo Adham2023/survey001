@@ -70,7 +70,8 @@ export default {
         { icon: 'add_circle_outline', text: 'New Project', path: 'newproject' },
         { icon: 'mdi-clipboard-account', text: 'Assignments', path: 'assignments'},
         { icon: 'bar_chart', text: 'Reports', path: 'reports' },
-        { icon: 'person_add', text: 'New User', path: 'newuser' }
+        { icon: 'person_add', text: 'New User', path: 'newuser' },
+        { icon: 'mdi-account-details', text: 'Subscription Info', path: 'subcription' }
       ],
     }),
     computed: {

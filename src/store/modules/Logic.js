@@ -58,10 +58,10 @@ const actions = {
             isParent: state.currentQuestion,
             Rule: state.Rule
         };
-        let len = rootState.newProject.Project[0].Questions.length;
+        let len = rootState.newProject.Questions.length;
         for(let i = 0; i < len; i++) {
-            if(state.skipToQuestion === rootState.newProject.Project[0].Questions[i].Number) {
-                rootState.newProject.Project[0].Questions[i].config = config;
+            if(state.skipToQuestion === rootState.newProject.Questions[i].Number) {
+                rootState.newProject.Questions[i].config = config;
                 i = len;
             }
         }

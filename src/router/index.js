@@ -7,7 +7,7 @@ import Newuser from '../views/Newreg'
 import Reports from '../views/Reports'
 import Projects from '../components/Projects/Projects'
 import Assignments from '../views/Assigns.vue'
-
+import SubscriptionDetails from '../views/SubscriptionDetails';
 import { TokenService } from './services/storage.service'
 
 Vue.use(VueRouter)
@@ -51,6 +51,11 @@ const routes = [
         path: 'newuser',
         name: 'newuser',
         component: Newuser
+      },
+      {
+        path:'subcription',
+        name:"SubscriptionDetails",
+        component: SubscriptionDetails
       },
       {
         path: 'about',
