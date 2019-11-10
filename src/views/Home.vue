@@ -17,7 +17,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ item.text == 'Projects' ? 'Projects  ' + $store.state.project_counter + '/3' : item.text }}
+                {{ item.text == 'Projects' ? 'Projects  ' : item.text }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -66,6 +66,7 @@ export default {
       dialog: false,
       drawer: null,
       routes: [
+        { icon: 'home', text: `Home`, path: 'home'},
         { icon: 'view_list', text: `Projects`, path: 'Projects'},
         { icon: 'add_circle_outline', text: 'New Project', path: 'newproject' },
         { icon: 'mdi-clipboard-account', text: 'Assignments', path: 'assignments'},

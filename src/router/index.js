@@ -8,6 +8,7 @@ import Reports from '../views/Reports'
 import Projects from '../components/Projects/Projects'
 import Assignments from '../views/Assigns.vue'
 import SubscriptionDetails from '../views/SubscriptionDetails';
+import MainHome from '../views/MainHome';
 import { TokenService } from './services/storage.service'
 
 Vue.use(VueRouter)
@@ -26,7 +27,13 @@ const routes = [
   {
     path: '/',
     component: Home,
+
     children: [
+      {
+        path: 'home',
+        name: 'home',
+        component: MainHome
+      },
       {
         path: 'assignments',
         name: 'assignments',

@@ -36,10 +36,10 @@
 import axios from 'axios';
 export default {
     mounted() {
-        axios.post('http://192.168.0.188:4000', {
+        axios.post('http://192.168.43.167:4000', {
             query: `{
-                projects(branch: 1) {
-                    id
+                projects {
+                    pk
                     name
                 }
             }
@@ -54,11 +54,12 @@ export default {
             })
 
         })
-        axios.post('http://192.168.0.188:4000', {
+        axios.post('http://192.168.43.167:4000', {
             query: `{
                 users {
-                    id
-                    username
+                    pk
+                    firstName
+                    lastName
                 }
             }
             `
@@ -66,8 +67,8 @@ export default {
             console.log(result.data.data.users)
             result.data.data.users.forEach(element => {
                 this.users.push({
-                    text: element.username,
-                    value: element.id
+                    text: element.firstName + ' ' + element.lastName,
+                    value: element.pk
                 })
             });
         })
