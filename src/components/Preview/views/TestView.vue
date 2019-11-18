@@ -4,7 +4,7 @@
       <v-col cols="6" >
         <v-card flat height="400px" width="600px" style="overflow-x: auto; overflow-y: auto;">
           <v-card-text>
-            <component :is="currentQuestion" :myNumber=""/>
+            <component :is="currentQuestion" :myNumber="myNumber"/>
           </v-card-text>
         </v-card>
         
