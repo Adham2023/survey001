@@ -255,6 +255,7 @@
                 "config": {
                     "isChild": null,
                     "isParent": null,
+                    "skipTo": null,
                     "Rule": null
                 },
                 "Title": "Another Snikers",

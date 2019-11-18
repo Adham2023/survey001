@@ -43,7 +43,7 @@ const actions = {
             commit('loginSuccess', token)
                 // Redirect the user to the page he first tried to visit or to the home view
             console.log("redirect begin")
-            router.push(router.history.current.query.redirect || '/');
+            router.push(router.history.current.query.redirect || '/home');
             console.log("redirect end")
             return true
         } catch (e) {

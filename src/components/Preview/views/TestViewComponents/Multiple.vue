@@ -40,7 +40,7 @@ export default {
     methods: {
         Answering(e) {
             console.log(e);
-            this.$emit('onMultipleChng', this.givenAnswer);
+            
         }
     }
 

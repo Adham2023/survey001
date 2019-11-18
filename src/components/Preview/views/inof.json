@@ -1,0 +1,46 @@
+[
+    {
+        "Title": "R3",
+        "Type": "Retail",
+        "Questions": [
+            {
+                "config": [
+                    {
+                        "Question": 2,
+                        "Rule": "|D,A"
+                    },
+                    {
+                        "Question": 3,
+                        "Rule": "&D,C"
+                    }
+                ],
+                "Number": 1,
+                "Type": 1,
+                "Question": "Q1",
+                "Answers": [
+                    "D",
+                    "C",
+                    "A"
+                ]
+            },
+            {
+                "config": [],
+                "Number": 2,
+                "Type": 2,
+                "Question": "husvhajsb",
+                "Answers": [
+                    "W",
+                    "D",
+                    "A"
+                ]
+            },
+            {
+                "config": [],
+                "Number": 3,
+                "Type": 3,
+                "InputType": "number",
+                "Question": "ewrtyui"
+            }
+        ]
+    }
+]

@@ -1,7 +1,7 @@
 <template>
   <v-container style="overflow-x: auto; overflow-y: auto; height: 90vh;">
     <v-row>
-      <v-col cols="6">
+      <v-col cols="5">
         <v-card flat outlined>
           <v-card-title class="grey--text">
             Question: 
@@ -18,12 +18,22 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="6">
+       <v-col cols="2">
+                  <v-select
+                    :items="operators"
+                    v-model="oprt"
+                    outlined
+                    @change="setOperator"
+                    label="operators"
+                  ></v-select>
+                </v-col>
+      <v-col cols="5">
         <v-card flat outlined>
           <v-card-title class="grey--text">
             Skip To: 
              <v-select
                 class="ml-5" 
+                :disabled="question == 0 ? true : false"
                 :items="SkipToQuestions"
                 label=""
                 v-model="skipQuestion"
@@ -38,29 +48,14 @@
     </v-row>
     <v-row>
       <v-col >
-        <v-card flat outlined>
-          <v-card-title class="grey--text">
-            <v-container>
-              <v-row justify="start">
-                <v-col cols="2">
-                  Operator: 
-                </v-col>
-                <v-col cols="2">
-                  <v-select
-                    :items="operators"
-                    outlined
-                    v-model="oprt"
-                    @change="setOperator"
-                    label="operators"
-                  ></v-select>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card-title>
+        <v-card flat >
           <v-card-text>
           
           </v-card-text>
           <v-card-actions class="d-flex justify-center align-center">
+            <v-btn @click="Cancel" class="red white--text">
+              <span>Cancel</span>
+            </v-btn>
             <v-btn @click="Apply" class="blue white--text">
               <span>Apply</span>
             </v-btn>
@@ -71,6 +66,19 @@
     <v-row>
       
     </v-row>
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+      <v-btn
+        color="pink"
+       
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -93,14 +101,15 @@ export default {
   },
    data() {
     return {
+      snackbar: false,
+      text: 'Please choose the Question to Skip to',
       question: 0,
       oprt: '',
       questions: [],
       skipQuestion: 0,
       operators: [
         {text:'and', value: "&"},
-        {text: 'or', value: '|'}, 
-        {text: 'not', value: '!'}, 
+        {text: 'or', value: '|'},
         {text: 'equal', value: '='},
       ]
     }
@@ -111,15 +120,22 @@ export default {
       this.OPERATOR(this.oprt);
       console.log(this.oprt);
     },
+    Cancel() {
+      this.question = 0;
+      this.skipQuestion = 0;
+    },
     Apply() {
-      // if(this.question !=0 && this.skipQuestion !=0) {
+      console.log()
+      if(this.skipQuestion !== '' && this.skipQuestion !== 0) {
         this.MAKE_RULE();
         this.SET_CONFIG_TO_QUESTION();
         this.question=0;
         this.oprt = '';
         this.skipQuestion = 0;
         
-      // }
+      }else {
+        this.snackbar = true;
+      }
     }
   },
   mounted() {

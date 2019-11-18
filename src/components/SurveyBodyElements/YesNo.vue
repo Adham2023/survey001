@@ -67,11 +67,7 @@ export default {
         Save() {
             if(this.isValid()) {
                 let question = {
-                    config: {
-                        isChild:false, 
-                        isParent: true,
-                        Rule: null
-                    },
+                    config: [],
                     Number: this.currentQuestion,
                     Type: 5,
                     Question: this.questionBody,

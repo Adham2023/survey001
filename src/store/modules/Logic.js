@@ -52,19 +52,15 @@ const actions = {
         commit('SET_RULE', Rule);
     },
     SET_CONFIG_TO_QUESTION({state, rootState}) {
-        console.log(rootState);
+        console.log("Qurrent: ", state.currentQuestion);
         let config = {
-            isChild: true,
-            isParent: state.currentQuestion,
+            Question: state.skipToQuestion,
             Rule: state.Rule
         };
-        let len = rootState.newProject.Questions.length;
-        for(let i = 0; i < len; i++) {
-            if(state.skipToQuestion === rootState.newProject.Questions[i].Number) {
-                rootState.newProject.Questions[i].config = config;
-                i = len;
-            }
-        }
+        state.skipToQuestion = '';
+        rootState.newProject.Questions[state.currentQuestion-1].config.push(config);
+        rootState.newProject.Questions[state.currentQuestion-1].config.sort((a, b) => (a.Question > b.Question) ? 1: -1);
+               
     }
 
 }

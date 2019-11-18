@@ -34,7 +34,7 @@
                   </v-row>
                   <v-row class="pa-0" align="center" >
                     <v-col class="">
-                     Raqam: {{raqamProp + ' len : ' + rs.length}}
+                     Raqam: {{raqamProp }}
 
                     </v-col>
                     <v-col>
@@ -170,7 +170,7 @@ export default {
   methods: {
     getBranches() {
       axios({
-        url: "http://192.168.43.167:4000",
+        url: "http://192.168.43.134:4000",
         method: "POST",
         data: {
           query: `
@@ -200,7 +200,7 @@ export default {
     },
     Register() {
       axios( {
-        url: "http://192.168.43.167:4000",
+        url: "http://192.168.43.134:4000",
         method: "POST",
         data: {
           query: `
@@ -235,7 +235,7 @@ export default {
     },
     getNumber() {
       axios({
-        url: 'http://192.168.43.167:4000',
+        url: 'http://192.168.43.134:4000',
         method: 'POST',
         data: {
           query: ` 
@@ -254,7 +254,7 @@ export default {
         // this.rs = [];
         res.forEach(element => {
             this.rs.push( {
-              text: ""+element.number,
+              text: "+9989 "+element.number,
               value: element.pk
             })
         });
