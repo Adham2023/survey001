@@ -110,7 +110,6 @@ export default {
       operators: [
         {text:'and', value: "&"},
         {text: 'or', value: '|'},
-        {text: 'equal', value: '='},
       ]
     }
   },

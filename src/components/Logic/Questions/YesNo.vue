@@ -5,8 +5,8 @@
       </v-card-title>
       <v-card-text v-if="!isSkiping">
                 <v-radio-group v-model="answers" :mandatory="false" @change="Answered">
-                    <v-radio label="answer" value="Yes"></v-radio>
-                    <v-radio label="answer" value="No"></v-radio>
+                    <v-radio label="Yes" value="Y"></v-radio>
+                    <v-radio label="No" value="N"></v-radio>
                 </v-radio-group>
               
       </v-card-text>

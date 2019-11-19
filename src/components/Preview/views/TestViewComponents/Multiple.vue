@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
     props: {
         myNumber: {
@@ -38,9 +39,13 @@ export default {
         }
     },
     methods: {
+        
         Answering(e) {
             console.log(e);
             
+        },
+        answerToQuestionIs() {
+            this.$store.dispatch('SET_ANSWER', this.givenAnswer);
         }
     }
 

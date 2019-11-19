@@ -10,7 +10,7 @@ export const currentCompontMixin =  {
                     return 'Single';
                     break;
                 case 3: 
-                    return 'Text';
+                    return 'Txt';
                     break;
                 case 4: 
                     return 'Range';
@@ -20,6 +20,9 @@ export const currentCompontMixin =  {
                     break;
                 case 6: 
                     return 'Matrix';
+                    break;
+                case 7:
+                    return 'Thanks';
                     break;
             }
         }

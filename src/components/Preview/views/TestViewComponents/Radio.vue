@@ -46,6 +46,9 @@ export default {
             p[0] = this.givenAnswer+"";
             console.log('OOO: ', p);
             this.$emit('onMultipleChng', p);
+        },
+        answerToQuestionIs() {
+            this.$store.dispatch('SET_ANSWER', this.givenAnswer);
         }
     }
 

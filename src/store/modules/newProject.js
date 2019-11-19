@@ -39,6 +39,9 @@ const mutations = {
         state.Questions.push(question);
     },
     CONVERT_TOJSON(state) {
+        state.Questions.push({
+            Type: 7
+        }) 
         console.log(JSON.stringify(state.Project))
     },
     CONSTRUCT_NEW_PROJECT(state) {
