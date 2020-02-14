@@ -4,69 +4,36 @@
         "Type": "Retail",
         "Questions": [
             {
-                "config": [
-                    {
-                        "Question": 4,
-                        "Rule": "|C,A"
-                    }
-                ],
+                "config": [],
                 "Number": 1,
                 "Type": 1,
-                "Question": "One",
+                "Question": "qwer",
                 "Answers": [
                     "C",
-                    "B",
                     "A"
                 ]
             },
             {
-                "config": [
-                    {
-                        "Question": 4,
-                        "Rule": "&D"
-                    },
-                    {
-                        "Question": 6,
-                        "Rule": "&B"
-                    }
-                ],
+                "config": [],
                 "Number": 2,
                 "Type": 2,
-                "Question": "Two",
+                "Question": "ertyu",
                 "Answers": [
-                    "D",
-                    "C",
-                    "B"
+                    "sss",
+                    "mbhjs"
                 ]
             },
             {
                 "config": [],
                 "Number": 3,
-                "Type": 3,
-                "InputType": "number",
-                "Question": "Text Three"
-            },
-            {
-                "config": [],
-                "Number": 4,
                 "Type": 4,
-                "Question": "Four",
-                "Range": "10"
+                "Question": "ertyu",
+                "Range": "19"
             },
             {
                 "config": [],
-                "Number": 5,
-                "Type": 5,
-                "Question": "Five",
-                "Answers": [
-                    1,
-                    0
-                ]
-            },
-            {
-                "config": [],
-                "Title": "Fill the following form",
-                "Number": 6,
+                "Title": "qwertyu",
+                "Number": 4,
                 "Type": 6,
                 "Question": null,
                 "productLabels": [
@@ -77,16 +44,12 @@
                     {
                         "id": 1,
                         "text": "Mars"
-                    },
-                    {
-                        "id": 2,
-                        "text": "Twix"
                     }
                 ],
                 "columns": [
                     {
                         "id": 0,
-                        "name": "Available",
+                        "name": "Bormi",
                         "type": 1
                     },
                     {
@@ -101,146 +64,19 @@
                         "ddItems": [
                             {
                                 "id": 0,
-                                "text": "Small"
+                                "text": "Large"
                             },
                             {
                                 "id": 1,
-                                "text": "Medium"
+                                "text": "Small"
                             },
                             {
                                 "id": 2,
-                                "text": "Large"
+                                "text": "Middle"
                             }
                         ]
                     }
                 ]
-            },
-            {
-                "Type": 7
-            },
-            {
-                "Type": 7
-            }
-        ]
-    },
-    {
-        "Title": "R2",
-        "Type": "Retail",
-        "Questions": [
-            {
-                "config": [
-                    {
-                        "Question": 4,
-                        "Rule": "|C,A"
-                    }
-                ],
-                "Number": 1,
-                "Type": 1,
-                "Question": "One",
-                "Answers": [
-                    "C",
-                    "B",
-                    "A"
-                ]
-            },
-            {
-                "config": [
-                    {
-                        "Question": 4,
-                        "Rule": "&D"
-                    },
-                    {
-                        "Question": 6,
-                        "Rule": "&B"
-                    }
-                ],
-                "Number": 2,
-                "Type": 2,
-                "Question": "Two",
-                "Answers": [
-                    "D",
-                    "C",
-                    "B"
-                ]
-            },
-            {
-                "config": [],
-                "Number": 3,
-                "Type": 3,
-                "InputType": "number",
-                "Question": "Text Three"
-            },
-            {
-                "config": [],
-                "Number": 4,
-                "Type": 4,
-                "Question": "Four",
-                "Range": "10"
-            },
-            {
-                "config": [],
-                "Number": 5,
-                "Type": 5,
-                "Question": "Five",
-                "Answers": [
-                    1,
-                    0
-                ]
-            },
-            {
-                "config": [],
-                "Title": "Fill the following form",
-                "Number": 6,
-                "Type": 6,
-                "Question": null,
-                "productLabels": [
-                    {
-                        "id": 0,
-                        "text": "Snikers"
-                    },
-                    {
-                        "id": 1,
-                        "text": "Mars"
-                    },
-                    {
-                        "id": 2,
-                        "text": "Twix"
-                    }
-                ],
-                "columns": [
-                    {
-                        "id": 0,
-                        "name": "Available",
-                        "type": 1
-                    },
-                    {
-                        "id": 1,
-                        "name": "Price",
-                        "type": 2
-                    },
-                    {
-                        "id": 2,
-                        "name": "Size",
-                        "type": 3,
-                        "ddItems": [
-                            {
-                                "id": 0,
-                                "text": "Small"
-                            },
-                            {
-                                "id": 1,
-                                "text": "Medium"
-                            },
-                            {
-                                "id": 2,
-                                "text": "Large"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "Type": 7
             },
             {
                 "Type": 7

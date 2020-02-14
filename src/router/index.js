@@ -86,7 +86,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(record => record.meta.public)
   const onlyWhenLoggedOut = to.matched.some(record => record.meta.onlyWhenLoggedOut)
-  const loggedIn =  true//!!TokenService.getToken();
+  const loggedIn =  true;//!!TokenService.getToken();
   // const loggedIn = !!"token";
 
   if (!isPublic && !loggedIn) {
